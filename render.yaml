@@ -1,0 +1,9 @@
+services:
+    - type: web
+      name: email-service
+      env: go
+      buildCommand: go build -o email-service
+      startCommand: ./email-service
+      envVars:
+          - key: PORT
+            value: 8080
