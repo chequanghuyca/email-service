@@ -11,6 +11,16 @@ import (
 	storagemail "email-service/module/email/storage"
 )
 
+// @Summary
+// Send multiple emails
+// @Description
+// Send emails to multiple recipients
+// @Tags email
+// @Accept json
+// @Produce json
+// @Param emails body emailmodel.MultipleEmailRequest true "List of email data"
+// @Success 200 {string} string "Email sent successfully"
+// @Router /api/email/multiple [post]
 func MultipleMail(appCtx appctx.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req emailmodel.MultipleEmailRequest

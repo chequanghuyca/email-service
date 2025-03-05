@@ -13,6 +13,14 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// @Summary Response to portfolio inquiry
+// @Description Send a response email for portfolio inquiry
+// @Tags email
+// @Accept json
+// @Produce json
+// @Param response body emailmodel.EmailResponsePortfolio true "Response data"
+// @Success 200 {string} string "Email sent successfully"
+// @Router /api/email/response-portfolio [post]
 func ResponseEmailPortfolio(appCtx appctx.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		godotenv.Load()
