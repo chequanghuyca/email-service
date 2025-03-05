@@ -11,10 +11,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// @Summary
-// Send a single email
-// @Description
-// Send an email to a single recipient
+// @Summary Send a single email
+// @Description Send an email to a single recipient
 // @Tags email
 // @Accept json
 // @Produce json
