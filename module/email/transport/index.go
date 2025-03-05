@@ -11,4 +11,5 @@ func RegisterRoutes(appCtx appctx.AppContext, router *gin.RouterGroup) {
 
 	email.POST("/single", SingleMail(appCtx))
 	email.POST("/multiple", MultipleMail(appCtx))
+	email.POST("/response-portfolio", ResponseEmailPortfolio(appCtx))
 }

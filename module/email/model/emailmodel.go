@@ -17,9 +17,15 @@ type ListDataEmail []struct {
 }
 
 type MultipleEmailRequest struct {
-	AddressesTo		ListDataEmail 	`json:"listRecipient" binding:"required"`
-	Subject 		string 			`json:"subject" binding:"required"`
-	Body    		string 			`json:"body" binding:"required"`
+	AddressesTo			ListDataEmail 		`json:"listRecipient" binding:"required"`
+	Subject 			string 				`json:"subject" binding:"required"`
+	Body    			string 				`json:"body" binding:"required"`
+}	
+	
+type EmailResponsePortfolio struct {	
+	Email	  			string 				`json:"email" binding:"required"`
+	Message 			string 				`json:"message" binding:"required"`
+	Name 				string 				`json:"name" binding:"required"`
 }
 
 func ErrSendEmail(err error) error {
