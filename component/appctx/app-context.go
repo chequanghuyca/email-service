@@ -1,7 +1,7 @@
 package appctx
 
 type AppContext interface {
-	SecretKey() 			string
+	SecretKey() string
 }
 
 type appCtx struct {

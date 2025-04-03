@@ -10,13 +10,12 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
-
 func MultipleSendEmail(listAddressesTo emailmodel.ListDataEmail, subject, body string) error {
 	godotenv.Load()
 	dialer := gomail.NewDialer(
-		"smtp.gmail.com", 
-		465, 
-		os.Getenv("SYSTEM_EMAIL"), 
+		"smtp.gmail.com",
+		465,
+		os.Getenv("SYSTEM_EMAIL"),
 		os.Getenv("SYSTEM_EMAIL_SERVER"),
 	)
 

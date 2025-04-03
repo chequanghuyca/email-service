@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 )
 
-type md5Hash struct {}
+type md5Hash struct{}
 
 func NewMd5Hash() *md5Hash {
 	return &md5Hash{}

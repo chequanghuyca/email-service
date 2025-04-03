@@ -32,17 +32,17 @@ func ResponseEmailPortfolio(appCtx appctx.AppContext) gin.HandlerFunc {
 		}
 
 		dataSendContact := helper.MailResponseData{
-			Name: req.Name,
+			Name:    req.Name,
 			MyPhone: os.Getenv("SYSTEM_PHONE_NUMBER"),
 			MyEmail: os.Getenv("SYSTEM_EMAIL"),
 		}
 
 		err := storagemail.SingleSendEmail(
-			req.Email, 
-			helper.GetSubjectMailResponse(),  
+			req.Email,
+			helper.GetSubjectMailResponse(),
 			helper.GetBodyMailResponse(dataSendContact),
 		)
-		
+
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, emailmodel.ErrSendEmail(err))
 		}

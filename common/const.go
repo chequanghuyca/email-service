@@ -3,7 +3,7 @@ package common
 import "log"
 
 const (
-	DbType = 1
+	DbType     = 1
 	DbTypeUser = 2
 )
 

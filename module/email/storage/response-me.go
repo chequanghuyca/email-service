@@ -19,9 +19,9 @@ func ResponseMeEmail(message string) error {
 	mailer.SetBody("text/html", message)
 
 	dialer := gomail.NewDialer(
-		"smtp.gmail.com", 
+		"smtp.gmail.com",
 		465,
-		os.Getenv("SYSTEM_EMAIL"), 
+		os.Getenv("SYSTEM_EMAIL"),
 		os.Getenv("SYSTEM_EMAIL_SERVER"),
 	)
 

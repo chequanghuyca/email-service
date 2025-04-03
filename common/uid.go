@@ -11,24 +11,24 @@ import (
 )
 
 type UID struct {
-	localID 	uint32
-	objectType 	int
-	shardID 	uint32
+	localID    uint32
+	objectType int
+	shardID    uint32
 }
 
 func NewUID(
-	localID 	uint32, 
-	objectType 	int, 
-	shardID 	uint32,
+	localID uint32,
+	objectType int,
+	shardID uint32,
 ) UID {
 	return UID{
-		localID: 	localID, 
-		objectType: objectType, 
-		shardID: 	shardID,
+		localID:    localID,
+		objectType: objectType,
+		shardID:    shardID,
 	}
 }
 
-//SET BITS
+// SET BITS
 // Shard: 1, ObjectType: 1, ID: 1  ==> 0001 0001 0001
 // 1 << 8 = 0001 0000 0000
 // 1 << 4 = 0000 0001 0000
@@ -62,9 +62,9 @@ func DecomposeUID(s string) (UID, error) {
 	}
 
 	u := UID{
-		localID: 	uint32(uid >> 28),
+		localID:    uint32(uid >> 28),
 		objectType: int(uid >> 18 & 0x3FF),
-		shardID: 	uint32(uid >> 0 & 0x3FFFF),
+		shardID:    uint32(uid >> 0 & 0x3FFFF),
 	}
 
 	return u, nil
@@ -108,25 +108,25 @@ func (uid *UID) Scan(value interface{}) error {
 	var i uint32
 
 	switch v := value.(type) {
-		case int:
-			i = uint32(v)
-		case int8:
-			i = uint32(v)
-		case int16:
-			i = uint32(v)
-		case int32:
-			i = uint32(v)
-		case int64:
-			i = uint32(v)
-		case []byte:
-			a, err := strconv.Atoi(string(v))
-			if err != nil {
-				return err
-			} 
+	case int:
+		i = uint32(v)
+	case int8:
+		i = uint32(v)
+	case int16:
+		i = uint32(v)
+	case int32:
+		i = uint32(v)
+	case int64:
+		i = uint32(v)
+	case []byte:
+		a, err := strconv.Atoi(string(v))
+		if err != nil {
+			return err
+		}
 
-			i = uint32(a)
-		default:
-			return fmt.Errorf("incompatible type for UID")
+		i = uint32(a)
+	default:
+		return fmt.Errorf("incompatible type for UID")
 	}
 
 	*uid = NewUID(i, 0, 0)

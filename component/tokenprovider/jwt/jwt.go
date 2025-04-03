@@ -25,7 +25,7 @@ func (j *jwtProvider) Generate(data tokenprovider.AccessTokenPayload, expiry int
 		data,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Local().Add(time.Second * time.Duration(expiry)).Unix(),
-			IssuedAt: time.Now().Local().Unix(),
+			IssuedAt:  time.Now().Local().Unix(),
 		},
 	})
 
@@ -36,9 +36,9 @@ func (j *jwtProvider) Generate(data tokenprovider.AccessTokenPayload, expiry int
 	}
 
 	return &tokenprovider.Token{
-		AccessToken:	myToken,
-		CreatedAt: 		time.Now(),
-		Expiry:    		expiry,
+		AccessToken: myToken,
+		CreatedAt:   time.Now(),
+		Expiry:      expiry,
 	}, nil
 }
 

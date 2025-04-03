@@ -32,21 +32,21 @@ var (
 )
 
 type Token struct {
-	AccessToken 	string 		`json:"access_token"`
-	FreshToken 		string 		`json:"fresh_token"`
-	CreatedAt 		time.Time 	`json:"created"`
-	Expiry 			int 		`json:"expiry"`
+	AccessToken string    `json:"access_token"`
+	FreshToken  string    `json:"fresh_token"`
+	CreatedAt   time.Time `json:"created"`
+	Expiry      int       `json:"expiry"`
 }
 
 type AccessTokenPayload struct {
-	UserId 		int 	`json:"user_id"`
-	Role 		string 	`json:"role"`
-	Email 		string 	`json:"email"`
-	LastName 	string 	`json:"last_name"`
-	FirstName 	string 	`json:"first_name"`
+	UserId    int    `json:"user_id"`
+	Role      string `json:"role"`
+	Email     string `json:"email"`
+	LastName  string `json:"last_name"`
+	FirstName string `json:"first_name"`
 }
 
 type FreshTokenPayload struct {
-	UserId 		int 	`json:"user_id"`
-	Email 		string 	`json:"email"`
+	UserId int    `json:"user_id"`
+	Email  string `json:"email"`
 }

@@ -20,18 +20,18 @@ var bodyMailResponse = `
 var subjectMailResponse = "THANK YOU FOR YOUR INTEREST"
 
 type MailResponseData struct {
-    Name  string
-    MyPhone string
-    MyEmail string
+	Name    string
+	MyPhone string
+	MyEmail string
 }
 
 func GetBodyMailResponse(data MailResponseData) string {
-    result := bodyMailResponse
+	result := bodyMailResponse
 
-    result = strings.ReplaceAll(result, "{{name}}", data.Name)
-    result = strings.ReplaceAll(result, "{{myPhone}}", data.MyPhone)
-    result = strings.ReplaceAll(result, "{{myMail}}", data.MyEmail)
-    return result
+	result = strings.ReplaceAll(result, "{{name}}", data.Name)
+	result = strings.ReplaceAll(result, "{{myPhone}}", data.MyPhone)
+	result = strings.ReplaceAll(result, "{{myMail}}", data.MyEmail)
+	return result
 }
 
 func GetSubjectMailResponse() string {

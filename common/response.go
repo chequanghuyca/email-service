@@ -1,14 +1,14 @@
 package common
 
 type successResponse struct {
-	Data 	interface{} `json:"data"`
-	Paging 	interface{} `json:"meta,omitempty"`
-	Filter 	interface{} `json:"filter,omitempty"`
+	Data   interface{} `json:"data"`
+	Paging interface{} `json:"meta,omitempty"`
+	Filter interface{} `json:"filter,omitempty"`
 }
 
-func NewSuccessResponse(data, paging, filter interface{}) *successResponse{
+func NewSuccessResponse(data, paging, filter interface{}) *successResponse {
 	return &successResponse{
-		Data: 	data,
+		Data:   data,
 		Paging: paging,
 		Filter: filter,
 	}
