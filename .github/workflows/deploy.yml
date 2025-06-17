@@ -48,8 +48,8 @@ jobs:
 
             - name: Deploy to Render
               run: |
-                  curl -fsSL https://render.com/deploy > deploy.sh  # Tải script deploy
-                  chmod +x deploy.sh
-                  ./deploy.sh  # Chạy script deploy để triển khai ứng dụng lên Render
+                  # Đảm bảo rằng tệp deploy.sh có quyền thực thi
+                  chmod +x ./deploy.sh  # Cấp quyền thực thi cho script
+                  ./deploy.sh ${{ secrets.RENDER_API_KEY }}  # Chạy script deploy với API Key
               env:
                   RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }} # Lấy API Key từ GitHub Secrets

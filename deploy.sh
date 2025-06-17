@@ -8,5 +8,5 @@ fi
 
 # Đăng nhập vào Render và triển khai ứng dụng
 echo "Deploying to Render..."
-curl -X POST https://api.render.com/v1/services/your-service-id/deployments \
+curl -X POST https://api.render.com/v1/services/email-service/deployments \
   -H "Authorization: Bearer $RENDER_API_KEY"
