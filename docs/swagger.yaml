@@ -58,6 +58,7 @@ paths:
     post:
       consumes:
       - application/json
+      description: Send emails to multiple recipients
       parameters:
       - description: List of email data
         in: body
@@ -72,6 +73,7 @@ paths:
           description: Email sent successfully
           schema:
             type: string
+      summary: Send multiple emails
       tags:
       - email
   /api/email/response-portfolio:
@@ -100,6 +102,7 @@ paths:
     post:
       consumes:
       - application/json
+      description: Send an email to a single recipient
       parameters:
       - description: Email data
         in: body
@@ -114,6 +117,7 @@ paths:
           description: Email sent successfully
           schema:
             type: string
+      summary: Send a single email
       tags:
       - email
 swagger: "2.0"

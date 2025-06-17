@@ -17,6 +17,7 @@ const docTemplate = `{
     "paths": {
         "/api/email/multiple": {
             "post": {
+                "description": "Send emails to multiple recipients",
                 "consumes": [
                     "application/json"
                 ],
@@ -26,6 +27,7 @@ const docTemplate = `{
                 "tags": [
                     "email"
                 ],
+                "summary": "Send multiple emails",
                 "parameters": [
                     {
                         "description": "List of email data",
@@ -83,6 +85,7 @@ const docTemplate = `{
         },
         "/api/email/single": {
             "post": {
+                "description": "Send an email to a single recipient",
                 "consumes": [
                     "application/json"
                 ],
@@ -92,6 +95,7 @@ const docTemplate = `{
                 "tags": [
                     "email"
                 ],
+                "summary": "Send a single email",
                 "parameters": [
                     {
                         "description": "Email data",
