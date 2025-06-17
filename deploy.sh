@@ -1,7 +1,12 @@
-- name: Deploy to Render
-run: |
-    curl -fsSL https://render.com/deploy > deploy.sh  # Tải script deploy
-    chmod +x deploy.sh
-    ./deploy.sh ${{ secrets.RENDER_API_KEY }}  # Chạy script deploy và truyền API Key từ GitHub Secrets
-env:
-    RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}  # Lấy API Key từ GitHub Secrets
+#!/bin/bash
+
+# Kiểm tra xem API key có tồn tại không
+if [ -z "$RENDER_API_KEY" ]; then
+  echo "RENDER_API_KEY is required"
+  exit 1
+fi
+
+# Đăng nhập vào Render và triển khai ứng dụng
+echo "Deploying to Render..."
+curl -X POST https://api.render.com/v1/services/your-service-id/deployments \
+  -H "Authorization: Bearer $RENDER_API_KEY"

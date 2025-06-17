@@ -1,4 +1,4 @@
-name: CI/CD for Render Deployment
+name: Deploy Render
 
 on:
     push:
