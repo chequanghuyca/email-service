@@ -19,7 +19,7 @@ jobs:
                   go-version: '1.23.1' # Phiên bản Go bạn đang sử dụng
 
             - name: Cache Go modules
-              uses: actions/cache@v2 # Caching Go modules để tăng tốc quá trình xây dựng
+              uses: actions/cache@v3 # Caching Go modules để tăng tốc quá trình xây dựng
               with:
                   path: ~/go/pkg/mod
                   key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
