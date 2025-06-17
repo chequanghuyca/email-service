@@ -1,0 +1,55 @@
+name: CI/CD for Render Deployment
+
+on:
+    push:
+        branches:
+            - master # Chỉ chạy CI/CD khi có push lên nhánh 'master'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest # Chạy trên môi trường Ubuntu
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2 # Lấy mã nguồn từ repository
+
+            - name: Set up Go
+              uses: actions/setup-go@v2 # Cài đặt Go cho môi trường
+              with:
+                  go-version: '1.23.1' # Phiên bản Go bạn đang sử dụng
+
+            - name: Cache Go modules
+              uses: actions/cache@v2 # Caching Go modules để tăng tốc quá trình xây dựng
+              with:
+                  path: ~/go/pkg/mod
+                  key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+                  restore-keys: |
+                      ${{ runner.os }}-go-
+
+            - name: Install dependencies
+              run: go mod tidy # Cài đặt các phụ thuộc của Go
+
+            - name: Run tests
+              run: go test -v ./... # Chạy test tự động
+
+    deploy:
+        runs-on: ubuntu-latest # Chạy trên môi trường Ubuntu
+
+        needs: build # Chờ job 'build' hoàn thành trước khi deploy
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2 # Lấy mã nguồn từ repository
+
+            - name: Set up Go
+              uses: actions/setup-go@v2
+              with:
+                  go-version: '1.23.1' # Phiên bản Go
+
+            - name: Deploy to Render
+              run: |
+                  curl -fsSL https://render.com/deploy > deploy.sh  # Tải script deploy
+                  chmod +x deploy.sh
+                  ./deploy.sh  # Chạy script deploy để triển khai ứng dụng lên Render
+              env:
+                  RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }} # Lấy API Key từ GitHub Secrets
