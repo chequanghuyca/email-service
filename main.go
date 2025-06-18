@@ -18,7 +18,7 @@ import (
 // @version 1.0
 // @description This is an email service API built with Golang and Gin.
 func main() {
-    godotenv.Load()
+	godotenv.Load()
 
 	appContext := appctx.NewAppContext(os.Getenv("SYSTEM_SECRET_KEY"))
 
@@ -28,7 +28,7 @@ func main() {
 	r.Use(middleware.CorsConnect())
 
 	r.Static("/static", "./static")
-	
+
 	middleware.ApiServices(appContext, r)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
